@@ -1,0 +1,64 @@
+/* --------------------- (Responsive) Web Page | Styles -----------------------
+------------------------------------------------------------------------ */
+
+@media (max-width: 992px) {
+
+    /*  Responsive Styles for
+            - Small Desktops and 
+            - Tablets
+    */
+    h1 {
+        font-size: 4.5em;
+        margin: 0.75em 0;
+    }
+
+    /* -------- Label (Text & Color) | Styles ------- */
+    .label-looks {
+        grid-template-columns: 100%;
+        grid-template-rows: 1fr;
+    }
+}
+
+@media (max-width: 767px) {
+
+    h1 {
+        font-size: 4em;
+        margin: 0.8em 0;
+    }
+
+    .choose-content {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 620px) {
+
+    h1 {
+        font-size: 3.5em;
+        margin: 1em 0;
+    }
+
+    .label-looks .label-colors {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 427px) {
+
+    .about-info {
+        width: 100%;
+    }
+
+    form {
+        gap: 1.5em;
+        padding: 4em 2em;
+    }
+
+    .label-looks,
+    .label-looks .label-colors,
+    .choose-content,
+    .label-looks .field,
+    .choose-content .field {
+        gap: 1.5em;
+    }
+}

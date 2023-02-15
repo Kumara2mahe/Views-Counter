@@ -1,0 +1,38 @@
+{% load static %}
+<svg fill="none" width="{{ badge_width }}px" height="25px" xmlns="http://www.w3.org/2000/svg">
+    <foreignObject style="width:100%;height:100%;">
+        <div xmlns="http://www.w3.org/1999/xhtml">
+            <style>
+                #views-counter {
+                    text-align: center;
+                }
+                .badge {
+                    font-family: monospace;
+                    font-size: 13px;
+                    font-weight: 600;
+                    display: inline-block;
+                    padding: 5px 10px 5px 6px;
+                }
+
+                .badge#label {
+                    background-color: #{{ left_bg }};
+                    color: #{{ left_fg }};
+                    padding-left: 10px;
+                    border-top-left-radius: 5px;
+                    border-bottom-left-radius: 5px;
+                }
+
+                .badge#count {
+                    font-weight: 800;
+                    background-color: #{{ right_bg }};
+                    color: #{{ right_fg }};
+                    border-top-right-radius: 5px;
+                    border-bottom-right-radius: 5px;
+                }
+            </style>
+            <div id="views-counter">
+                <span class="badge" id="label">{{ label }}</span><span class="badge" id="count">{{ count }}</span>
+            </div>
+        </div>
+    </foreignObject>
+</svg>

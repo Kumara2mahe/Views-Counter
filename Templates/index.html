@@ -1,0 +1,111 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en-US" dir="ltr">
+
+<head>
+    <title>Views Counter - come and generate your own visitors badge for free</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="create your views counter badge">
+    <meta name="viewport" content="width = device-width, initial-scale = 1">
+    <link rel="stylesheet" href="{% static 'CSS/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/responsive.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'Icons/favicon.png' %}">
+    <script type="module" src="{% static 'JavaScript/script.js' %}"></script>
+</head>
+
+<body>
+    <header class="wrapper">
+        <h1><span class="strike">Views</span> Counter</h1>
+        <div class="page-views">
+            <img src="{% url 'badge' %}?pageId=views-counter-by-kumara&leftColor=6C766D&rightColor=781f25&&type=daily&sessionExpire=60&label=Today&style=none"
+                alt="today views" title="Viewers Today">
+            <img src="{% url 'badge' %}?pageId=views-counter-by-kumara&rightColor=0ADB3F&type=total&sessionExpire=60&label=Total&style=upper"
+                alt="total views" title="Total Viewers">
+            <img src="{% url 'badge' %}?pageId=views-counter-by-kumara&leftColor=789&rightColor=639&type=unique&sessionExpire=60&label=Unique&style=lower"
+                alt="unique views" title="Total unique Visitors">
+        </div>
+        <p class="about-info">Want to show how many visitors your site/GitHub profiles gets? Quickly fill in the form
+            on the page, and copy the Markdown or HTML code to the location you want to use it.</p>
+    </header>
+    <main class="wrapper">
+        <form id="generate-badge" method="POST" autocomplete="on">
+            <div class="heading-wrapper">
+                <h2 class="heading"><span class="strike">Create</span> Badge</h2>
+                <p class="sub-text">Fill in the following form to get your visitor badge Markdown and image URL</p>
+            </div>
+            {% csrf_token %}
+            <label for="user-name">URL / Username / Repository</label>
+            <input type="text" name="pageId" id="user-name" autocomplete="username"
+                placeholder="eg: foo_bar / views-counter" required>
+            <div class="label-looks">
+                <div class="field l-text">
+                    <label for="badge-label">Label</label>
+                    <input type="text" name="label" id="badge-label" placeholder="default: Visitors">
+                </div>
+                <div class="label-colors">
+                    <div class="field">
+                        <label for="left-color">Label Background</label>
+                        <label class="color-picker" id="left-color">click to change
+                            <input type="color" name="leftColor" value="#000000" hidden>
+                        </label>
+                    </div>
+                    <div class="field">
+                        <label for="right-color">Count Background</label>
+                        <label class="color-picker" id="right-color">click to change
+                            <input type="color" name="rightColor" value="#0ADB3F" hidden>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="choose-content">
+                <div class="field">
+                    <label for="badge-type">Badge type</label>
+                    <select name="type" id="badge-type">
+                        <option value="total" selected>total</option>
+                        <option value="daily">daily</option>
+                        <option value="unique">unique</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="label-style">Label style</label>
+                    <select name="style" id="label-style">
+                        <option value="upper">upper</option>
+                        <option value="lower">lower</option>
+                        <option value="none" selected>none</option>
+                    </select>
+                </div>
+            </div>
+            <input type="submit" value="Generate">
+        </form>
+        <section id="output-section">
+            <h2><span class="strike">Code</span> To Use</h2>
+            <p class="sub-text">Just copy the Markdown or HTML code to any of your projects</p>
+            <div class="urls">
+                <label for="markdown">Markdown</label>
+                <pre class="box" id="markdown" tabindex="0">
+                    <input type="text" placeholder="Your URL will be displayed here!" tabindex="-1" readonly>
+                    <img src="{% static 'Icons/copy.svg' %}" alt="copy" title="copy markdown">
+                </pre>
+                <label for="html-img">HTML</label>
+                <pre class="box" id="html-img" tabindex="0">
+                    <input type="text" placeholder="Your URL will be displayed here!" tabindex="-1" readonly>
+                    <img src="{% static 'Icons/copy.svg' %}" alt="copy" title="copy html">
+                </pre>
+                <label for="img-url">Image Url</label>
+                <pre class="box" id="img-url" tabindex="0">
+                    <input type="text" placeholder="Your URL will be displayed here!" tabindex="-1" readonly>
+                    <img src="{% static 'Icons/copy.svg' %}" alt="copy" title="copy url">
+                </pre>
+            </div>
+            <div id="preview-loader"></div>
+        </section>
+    </main>
+    <footer class="wrapper copyrights">
+        <small>&copy; {{ current_year }} <span class="site-name">Views-Counter</span>. All rights
+            reserved&ensp;|&ensp;This template is made by <a class="designer grad-text"
+                href="https://github.com/Kumara2mahe" target="_blank">Kumara</a></small>
+    </footer>
+</body>
+
+</html>

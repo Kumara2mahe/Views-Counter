@@ -1,0 +1,339 @@
+/* --------------- Global | Styles --------------- */
+
+:root {
+    --azurex11webcolor: #E8F7F6;
+    --black: #000;
+    --burgundy: #781f25;
+    --darkslategray: #395959;
+    --nickel: #6C766D;
+    --rebeccapurple: #639;
+    --redNCS: #AA2B3F;
+    --silver: #BFBFBF;
+    --slategray: #789;
+    --white: #FFF;
+}
+
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-size: 0.9em;
+    text-align: center;
+    color: var(--black);
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+*:focus-visible {
+    outline: 0.1em solid var(--nickel);
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    font-size: 0.95em;
+    line-height: 1.5em;
+    color: var(--nickel);
+}
+
+.wrapper {
+    width: 80vw;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* ------------ Header | Styles ------------ */
+
+h1 {
+    font-size: 5em;
+    box-shadow: 0 1em 0.5em rgba(191, 191, 191, 0.2);
+    border-radius: 1em;
+}
+
+.strike {
+    display: inline-block;
+    position: relative;
+}
+
+.strike::after {
+    content: "";
+    background-color: var(--white);
+    width: 100%;
+    height: 12%;
+    border-radius: 0.1em;
+    position: absolute;
+    top: 51%;
+    left: 0;
+}
+
+/* ---- badges----- */
+.page-views {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+}
+
+.about-info {
+    font-size: 1.1em;
+    width: 80%;
+    margin: 4em auto;
+}
+
+.heading-wrapper {
+    text-align: right;
+}
+
+.heading-wrapper .heading {
+    position: relative;
+}
+
+/* ----------- Form | Styles ---------- */
+form {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+    gap: 2em;
+    margin: 2.5em 0;
+    padding: 4em;
+    box-shadow: 0 0.5em 2em rgba(0, 0, 0, 0.1);
+    border-radius: 0.5em;
+}
+
+form input,
+form select,
+form .color-picker {
+    font-family: inherit;
+    font-size: 1.1em;
+    background-color: transparent;
+    padding: 1em;
+    border: none;
+    outline: none;
+    border: 0.1em solid var(--silver);
+    border-radius: 0.25em;
+}
+
+form #user-name.empty:focus {
+    outline-color: var(--redNCS);
+    border-color: var(--redNCS);
+}
+
+/* -- Color-Change Buttons -- */
+form .color-picker {
+    text-align: center;
+    color: var(--nickel);
+    cursor: pointer;
+}
+
+form .color-picker:hover {
+    background-color: var(--azurex11webcolor);
+    opacity: 0.8;
+}
+
+/* -- Generate Button -- */
+form input[type=submit] {
+    background-color: rgba(191, 191, 191, 0.2);
+    margin-top: 2em;
+}
+
+form input[type=submit]:not(:disabled):hover {
+    background-color: rgba(191, 191, 191, 0.4);
+}
+
+form input[type=submit]:not(:disabled):active {
+    background-color: rgba(191, 191, 191, 0.6);
+}
+
+form input[type=submit]:disabled {
+    cursor: not-allowed;
+}
+
+label {
+    text-align: left;
+    color: rgba(0, 0, 0, 0.7);
+    margin-bottom: -1em;
+}
+
+/* -------- Label (Text & Color) | Styles ------- */
+.label-looks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2em;
+}
+
+.label-looks .label-colors,
+.choose-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 2em;
+}
+
+.label-looks .field,
+.choose-content .field {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    width: 100%;
+}
+
+/* --------- Generated-Output | Styles -------- */
+#output-section {
+    text-align: left;
+    margin: 6em 0;
+    transition: opacity 1s ease-in-out,
+        height 1s ease-in-out,
+        margin 0.5s ease-in-out,
+        transform 0.5s ease-in-out;
+}
+
+#output-section:not(.show) {
+    opacity: 0;
+    height: 0;
+    margin: 2em 0;
+    transform: scale(0);
+}
+
+#output-section .urls {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    margin: 3em 0;
+}
+
+.urls .box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--slategray);
+    margin: 0;
+    padding: 1em;
+    border-radius: 0.25em;
+    position: relative;
+    overflow: hidden;
+}
+
+.box:focus-visible {
+    outline-width: 0.2em;
+}
+
+/* -- Url Input -- */
+.box input {
+    font-family: inherit;
+    font-size: 1.2em;
+    font-weight: 500;
+    background-color: transparent;
+    color: var(--white);
+    width: 100%;
+    padding: 0.25em;
+    border: none;
+    outline: none;
+}
+
+.box input::selection,
+.box input::-moz-selection {
+    background-color: var(--rebeccapurple);
+}
+
+/* -- Copy Icon -- */
+.box img {
+    background-color: var(--darkslategray);
+    color: var(--white);
+    opacity: 1;
+    padding: inherit;
+    border-radius: inherit;
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+}
+
+.box:not(:focus-visible) img:not(.copied):not(:hover) {
+    background-color: rgba(57, 89, 89, 0.8);
+    opacity: 0.8;
+}
+
+#output-section .box img:not(.loaded):not(.copied) {
+    font-size: 1.25em;
+    font-weight: 500;
+    background-color: var(--darkslategray);
+}
+
+#output-section .box img.error:not(.copied) {
+    background-color: var(--azurex11webcolor);
+}
+
+/* Preview-Badge */
+#preview-badge:not(.loaded) {
+    display: none;
+}
+
+#output-section.show #preview-loader {
+    width: 3em;
+    height: 3em;
+    border: 0.2em solid var(--slategray);
+    border-left-color: var(--white);
+    border-right-color: var(--white);
+    border-radius: 50%;
+    animation: rotate-clock 0.5s linear infinite;
+    animation-play-state: running;
+}
+
+@keyframes rotate-clock {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#preview-badge.loaded+#preview-loader {
+    animation-play-state: paused;
+    display: none;
+}
+
+/* --- Footer-copyrights | Styles --- */
+
+footer {
+    text-align: center;
+    padding: 2em 0;
+}
+
+footer a,
+footer small {
+    color: var(--nickel);
+    transition: padding 300ms ease-in-out;
+}
+
+.copyrights .site-name {
+    color: var(--black);
+}
+
+.copyrights .designer {
+    background-image: linear-gradient(to right, var(--redNCS), var(--nickel));
+    color: transparent;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+}
+
+.copyrights .designer:hover {
+    background-image: none;
+    color: var(--redNCS);
+    text-shadow: 0 1.25em 0.5em var(--lightseagreen);
+}
+
+.copyrights .designer:active {
+    color: var(--lightseagreen);
+}
