@@ -132,7 +132,7 @@ def calcBadgeWidth(label: str, count: str):
     else:
         diff = BADGE_MINLEN - badge_width
         badge_width = 92 - diff * (HALF_LEN + diff / 2)
-    return str(badge_width + 2)
+    return str(badge_width * 1.08)
 
 
 def getHexColor(val: str, noHash: bool, label: bool):

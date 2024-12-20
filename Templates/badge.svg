@@ -1,15 +1,19 @@
 {% load static %}
 <svg fill="none" width="{{ badge_width }}px" height="25px" xmlns="http://www.w3.org/2000/svg">
     <foreignObject style="width:100%;height:100%;">
-        <div xmlns="http://www.w3.org/1999/xhtml">
+        <div xmlns="http://www.w3.org/1999/xhtml" >
             <style>
+                @font-face {
+                    font-family: "Consolas";
+                    src: url('{% static "Fonts/Consolas.TTF" %}') format("truetype");
+                  }
                 #views-counter {
                     text-align: center;
                 }
                 .badge {
-                    font-family: monospace;
+                    font-family: "Consolas", monospace;
                     font-size: 13px;
-                    font-weight: 600;
+                    font-weight: 500;
                     display: inline-block;
                     padding: 5px 10px 5px 6px;
                 }
@@ -23,7 +27,7 @@
                 }
 
                 .badge#count {
-                    font-weight: 800;
+                    font-weight: 500;
                     background-color: #{{ right_bg }};
                     color: #{{ right_fg }};
                     border-top-right-radius: 5px;
